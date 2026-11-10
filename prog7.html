@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calendar</title>
+<style>
+body {
+ font-family:Arial;
+ background:#EAF4FF;
+ text-align:center;
+}
+h1,h2,h3 { color:#174A7E; }
+.calendar {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+}
+.month {
+ background:white;
+ padding:10px;
+ border-radius:10px;
+ box-shadow:0 2px 6px #B5D5F0;
+}
+table {
+ width:100%;
+ border-collapse:collapse;
+}
+th {
+ background:#2878B5;
+ color:white;
+}
+td,th {
+ padding:7px;
+ border:1px solid #C8DFF0;
+}
+td { color:#333; }
+</style>
+</head>
+<body>
+
+<h1>Calendar</h1>
+
+<script>
+let year=Number(prompt("Enter Year:"));
+
+if(year>=1000 && year<=9999) {
+ document.write("<h2>"+year+"</h2>");
+ document.write("<div class='calendar'>");
+
+ let months=["January","February","March","April",
+ "May","June","July","August","September",
+ "October","November","December"];
+
+ let days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+ for(let m=0;m<12;m++) {
+  document.write("<div class='month'><h3>"+months[m]+"</h3><table><tr>");
+
+  days.forEach(d=>document.write("<th>"+d+"</th>"));
+
+  document.write("</tr><tr>");
+
+  let first=new Date(year,m,1).getDay();
+  let total=new Date(year,m+1,0).getDate();
+
+  for(let i=0;i<first;i++)
+   document.write("<td></td>");
+
+  for(let d=1;d<=total;d++) {
+   document.write("<td>"+d+"</td>");
+   if((first+d)%7==0) document.write("</tr><tr>");
+  }
+
+  document.write("</tr></table></div>");
+ }
+ document.write("</div>");
+}
+else {
+ alert("Enter valid year (1000-9999)");
+}
+</script>
+</body>
+</html>
+
