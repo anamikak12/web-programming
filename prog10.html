@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Mouse Over Event</title>
+<style>
+body {
+text-align: center;
+font-family: Arial;
+background-color:lightyellow;
+padding-top: 50px;
+}
+img {
+width: 500px;
+height: 400px;
+border-radius: 1px;
+}
+h2 {
+color:orange;
+}
+</style>
+</head>
+<body>
+<h2>Mouse Events</h2>
+<div onmouseover="changeContent()" onmouseout="restoreContent()">
+<img id="myImage" src="image1.jpg">
+<h3 id="myText">Move Mouse Over</h3>
+</div>
+<script>
+function changeContent() {
+    document.getElementById("myImage").src="/home/user/Downloads/munnar.jpg";
+    document.getElementById("myText").innerHTML="Welcome! to munnar";
+}
+function restoreContent() {
+    document.getElementById("myImage").src="/home/user/Downloads/backwater.jpg";
+    document.getElementById("myText").innerHTML ="welcome! kuttanad";
+}
+</script>
+</body>
+</html>
